@@ -1,4 +1,4 @@
-const SLICE_COUNT = 12;
+const SLICE_COUNT = 14;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
@@ -15,22 +15,17 @@ function setup_layers(pScope){
 
   new PLayer(null, 0, 0, 0);  //lets us draw the whole circle background, ignoring the boundaries
 
-  // var layer1 = new PLayer(faces);
-  // layer1.mode( SWIRL(5) );
-  // layer1.set_boundary( 200, 1000 );
+  var layer1= new PLayer(squares);
+  layer1.mode( RING );
+  layer1.set_boundary( 0, 1000 );
 
-  var layer1 = new PLayer(star_sign);
-  layer1.mode( SWIRL(6) );
-  layer1.set_boundary( 200, 1000 );
+  var layer2 = new PLayer(star_sign);
+  layer2.mode( SWIRL(6) );
+  layer2.set_boundary( 0, 800 );
 
-  // var layer2 = new Player(squares);
-  // layer2.mode( RING );
-  // layer2.set_boundary( 0, 600 );
-  
   var layer3 = new PLayer(magic_sign);
   layer3.mode( RING );
-  //layer3.set_boundary( 0, 300 );
-
+  layer3.set_boundary( 0, 300 );
 }
 
 function faces(x, y, animation, pScope){
@@ -42,21 +37,6 @@ function faces(x, y, animation, pScope){
   ellipse(-10,-10,10,10); //draw eye
   ellipse(10,-10,10,10); // draw eye
   arc(0,10,20,10,0,180); // draw mouth
-
-}
-
-function squares(x, y, animation, pScope){
-
-  // this is how you set up a background for a specific layer
-  let angleOffset = (360 / SLICE_COUNT) / 2
-  let backgroundArcStart = 270 - angleOffset;
-  let backgroundArcEnd = 270 + angleOffset;
-
-  fill(66, 135, 245)
-  arc(x,y,800,800,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
-
-  fill(255)
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
 
 }
 
@@ -105,4 +85,19 @@ scale(2*animation.wave(2));
 rotate(360*animation.frame);
 var starsx = animation.wave(2)*1200;
 pScope.draw_image("stars",starsx,y);
+}
+
+function squares(x, y, animation, pScope){
+
+  // this is how you set up a background for a specific layer
+  let angleOffset = (360 / SLICE_COUNT) / 2
+  let backgroundArcStart = 270 - angleOffset;
+  let backgroundArcEnd = 270 + angleOffset;
+
+  fill(5, 5, 5)
+  arc(x,y,100,1000,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+
+  fill(69, 0, 98)
+  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+
 }
