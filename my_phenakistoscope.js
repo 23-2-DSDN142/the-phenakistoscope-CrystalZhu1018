@@ -9,6 +9,7 @@ function setup_pScope(pScope){
   pScope.load_image("icon" , "png");
   pScope.load_image("star" , "png");
   pScope.load_image("stars" , "png");
+  pScope.load_image_sequence("potion", "png", 14);
 }
 
 function setup_layers(pScope){
@@ -23,9 +24,17 @@ function setup_layers(pScope){
   layer2.mode( SWIRL(6) );
   layer2.set_boundary( 0, 800 );
 
-  var layer3 = new PLayer(magic_sign);
-  layer3.mode( RING );
-  layer3.set_boundary( 0, 300 );
+  var layer3 = new PLayer(stars_sign);
+  layer3.mode( SWIRL(4) );
+  layer3.set_boundary( 0, 600 );
+
+  var potionSequence = new PLayer(potion);
+  potionSequence.mode( RING );
+  potionSequence.set_boundary( 0, 1000 );
+
+  var layer4 = new PLayer(magic_sign);
+  layer4.mode( RING );
+  layer4.set_boundary( 0, 300 );
 }
 
 function faces(x, y, animation, pScope){
@@ -52,6 +61,15 @@ scale(0.3);
 pScope.draw_image("icon",x,y);
 }
 
+function stars_sign(x, y, animation, pScope){
+  let angleOffset = (360 / SLICE_COUNT) / 2
+  let backgroundArcStart = 270 - angleOffset;
+  let backgroundArcEnd = 270 + angleOffset;
+
+scale(0.06);
+pScope.draw_image("stars",x,y);
+}
+
 function star_sign(x, y, animation, pScope){
   let angleOffset = (360 / SLICE_COUNT) / 2
   let backgroundArcStart = 270 - angleOffset;
@@ -74,14 +92,10 @@ vertex(-10, -8);
 vertex(-35, 0);
 vertex(-10, 10);
 endShape();
-// scale(0.2);
-// var starx = 360*animation.wave(2)*400;
-// rotate(360*animation.frame);
-// scale(2*animation.wave());
-// pScope.draw_image("star",x,y);
+
 pop();
-scale(0.1);
-scale(2*animation.wave(2));
+scale(0.05);
+scale(2*animation.wave(1));
 rotate(360*animation.frame);
 var starsx = animation.wave(2)*1200;
 pScope.draw_image("stars",starsx,y);
@@ -94,10 +108,17 @@ function squares(x, y, animation, pScope){
   let backgroundArcStart = 270 - angleOffset;
   let backgroundArcEnd = 270 + angleOffset;
 
-  fill(5, 5, 5)
-  arc(x,y,100,1000,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
+  fill(5, 5, 5);
+  arc(x,y,0,1000,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
 
-  fill(69, 0, 98)
-  rect(-10,-300-animation.wave()*50,20,20) // .wave is a cosine wave btw
+  fill(69, 0, 98);
+  scale(1.5);
+  rect(-10,-300-animation.wave()*50,20,20); // .wave is a cosine wave btw
 
+}
+
+function potion(x, y, animation, pScope){
+
+scale(0.35);
+pScope.draw_image_from_sequence("potion", 0, 2200, animation.frame);
 }
