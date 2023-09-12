@@ -1,4 +1,4 @@
-const SLICE_COUNT = 14;
+const SLICE_COUNT = 12;
 
 function setup_pScope(pScope){
   pScope.output_mode(ANIMATED_DISK);
