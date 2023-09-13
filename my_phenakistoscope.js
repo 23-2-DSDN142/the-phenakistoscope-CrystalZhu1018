@@ -58,18 +58,12 @@ pScope.draw_image("icon",x,y);
 }
 
 function stars_sign(x, y, animation, pScope){
-  // let angleOffset = (360 / SLICE_COUNT) / 2
-  // let backgroundArcStart = 270 - angleOffset;
-  // let backgroundArcEnd = 270 + angleOffset;
 
 scale(0.06);
 pScope.draw_image("stars",x,y);
 }
 
 function star_sign(x, y, animation, pScope){
-  // let angleOffset = (360 / SLICE_COUNT) / 2
-  // let backgroundArcStart = 270 - angleOffset;
-  // let backgroundArcEnd = 270 + angleOffset;
 
 push();
 noFill();
@@ -99,21 +93,13 @@ pScope.draw_image("stars",starsx,y);
 
 function squares(x, y, animation, pScope){
 
-  // this is how you set up a background for a specific layer
-  // let angleOffset = (360 / SLICE_COUNT) / 2
-  // let backgroundArcStart = 270 - angleOffset;
-  // let backgroundArcEnd = 270 + angleOffset;
-
-  // fill(5, 5, 5);
-  // arc(x,y,0,1000,backgroundArcStart,backgroundArcEnd); // draws "pizza slice" in the background
-
   fill(69, 0, 98);
   scale(1.5);
   rect(-10,-300-animation.wave()*50,20,20); // .wave is a cosine wave btw
 
   fill(69, 0, 98);
   scale(0.8);
-  rect(-600,-300-animation.wave()*30,20,20);
+  rect(-600,-150-animation.wave()*20,20,20);
 
 }
 
