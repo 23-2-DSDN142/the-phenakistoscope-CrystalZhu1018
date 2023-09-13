@@ -16,46 +16,34 @@ function setup_layers(pScope){
 
   new PLayer(null, 25, 25, 25);  //lets us draw the whole circle background, ignoring the boundaries
 
-  var outerRing = new PLayer(outsideRing);
+  var outerRing = new PLayer(outsideRing);//outer ring layer in the bottom
   outerRing.mode( RING );
   outerRing.set_boundary( 850, 1000 );
 
-  var layer1= new PLayer(squares);
+  var layer1= new PLayer(squares);//layer of purple squares in the background
   layer1.mode( RING );
   layer1.set_boundary( 0, 1000 );
 
-  var layer2 = new PLayer(star_sign);
+  var layer2 = new PLayer(star_sign);//layer of golden stars
   layer2.mode( SWIRL(6) );
   layer2.set_boundary( 0, 800 );
 
-  var layer3 = new PLayer(stars_sign);
+  var layer3 = new PLayer(stars_sign);//layer of golden stars as well
   layer3.mode( SWIRL(4) );
   layer3.set_boundary( 0, 600 );
 
-  var potionSequence = new PLayer(potion);
+  var potionSequence = new PLayer(potion);//layer of potion bottles
   potionSequence.mode( RING );
   potionSequence.set_boundary( 0, 1000 );
 
-  var layer4 = new PLayer(magic_sign);
+  var layer4 = new PLayer(magic_sign);//layer of golden magic sign in the middle
   layer4.mode( RING );
   layer4.set_boundary( 0, 300 );
 
-  var center = new PLayer(spot);
+  var center = new PLayer(spot);//layer of purple ellipses in the center
   center.mode( RING );
   center.set_boundary( 0, 100 );
 }
-
-// function faces(x, y, animation, pScope){
-  
-//   scale(animation.wave(8));//frame*2
-
-//   ellipse(0,0,50,50); // draw head
-//   fill(30);
-//   ellipse(-10,-10,10,10); //draw eye
-//   ellipse(10,-10,10,10); // draw eye
-//   arc(0,10,20,10,0,180); // draw mouth
-
-//}
 
 function magic_sign(x, y, animation, pScope){
   let angleOffset = (360 / SLICE_COUNT) / 2
